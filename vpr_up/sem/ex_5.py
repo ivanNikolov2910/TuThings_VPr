@@ -84,21 +84,21 @@ while True:
 # 3 Напишете програма, която отпечатва перфектните числа от даден списък с цели числа.
 # Програмата включва функция, която получава като аргумент число и принтира числото ,ако то е перфектно.
 
-def perf_nums(num):
-    del_list = []
-    for j in range(1, num):
-        if num % j == 0:
-            del_list.append(j)
-
-    del_sum = sum(del_list)
-    if del_sum == num:
-        print(num, end="; ")
-
-
-input_list = [random.randint(0, 100) for i in range(100)]
-# input_list = [6, 78, 28]
-for input in input_list:
-    perf_nums(input)
+# def perf_nums(num):
+#     del_list = []
+#     for j in range(1, num):
+#         if num % j == 0:
+#             del_list.append(j)
+#
+#     del_sum = sum(del_list)
+#     if del_sum == num:
+#         print(num, end="; ")
+#
+#
+# input_list = [random.randint(0, 100) for i in range(100)]
+# # input_list = [6, 78, 28]
+# for input in input_list:
+#     perf_nums(input)
 
 
 # 4 Напишете функция,  която получава като аргумент числов списък.
