@@ -54,7 +54,6 @@ while True:
         print(round(my_div(num1, num2), 2))
 
 
-
 # 3  на функция се подават 2 аргумента - лист нъм и чусло. Променете всички ел от списъка със стойност > число на 0
 
 def change_vales(array, number):
