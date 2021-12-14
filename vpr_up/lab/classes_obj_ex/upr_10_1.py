@@ -3,6 +3,11 @@
 
 # part 2 метод за намиране на min/max grade - 2methods и метод който връща данните за студентите с еднакъв успех
 
+# 2 метода: данни във файл. чете и създава списък на студентите. Метод, който връща данни а студент с четен и нечетен
+# фак. нум
+
+import constants.pr_constants as pr_constants
+
 class Student():
     def __init__(self, f_num, name, family, grade):
         self.f_num = f_num
@@ -56,23 +61,46 @@ class Group:
                 new_set.add(self.st_list[i])
         return new_set
 
+    def create_new_list(self, file):
+        for row in file:
+            data_list = row.split(' ')
+            self.st_list.append(Student(int(data_list[0]), data_list[1], data_list[2], float(data_list[3])))
+
+    def get_even(self):
+        for st in self.st_list:
+            if st.f_num % 2 == 0:
+                return st
+    def get_odd(self):
+        for st in self.st_list:
+            if st.f_num % 2 != 0:
+                return st
+
 
 gr43a = Group([Student(121221146, 'Aleksandar', 'Shopov', 4.60), Student(121221144, 'Aysel', 'Kazalieva', 4.60),
                Student(121221178, 'Miroslav', 'Dilov', 5.60), Student(121221000, 'Nqkoi', 'Nepoznat', 2.60),
                Student(121221096, 'Vasil', 'Alendarov', 5.60)])
 
-# gr43a.add_new(Student(121221096, 'Vasil', 'Alendarov', 5.60))
-gr43a.add_new(Student(121221010, 'Ívan', 'Nikolov', 5.60))
-gr43a.present()
+# # gr43a.add_new(Student(121221096, 'Vasil', 'Alendarov', 5.60))
+# gr43a.add_new(Student(121221010, 'Ívan', 'Nikolov', 5.60))
+# gr43a.present()
+#
+# # print по успех
+# print(gr43a.avg_grade())
+# print(gr43a.get_min_grade())
+# print(gr43a.get_max_grade())
+#
+# # метод който връща данните за студентите с еднакъв успех
+# gr_stud_list = gr43a.get_equal_grade(5.60)
+# for i in gr_stud_list:
+#     print(i, end="  ")
+#
+# gr43a.remove()
 
-# print по успех
-print(gr43a.avg_grade())
-print(gr43a.get_min_grade())
-print(gr43a.get_max_grade())
+file = open(str(pr_constants.RESOURCES_PATH + 'students.txt'), 'r')
+gr43a.create_new_list(file)
+for st in gr43a.st_list:
+    print(st)
 
-# метод който връща данните за студентите с еднакъв успех
-gr_stud_list = gr43a.get_equal_grade(5.60)
-for i in gr_stud_list:
-    print(i, end="  ")
-
-gr43a.remove()
+print("\n\n")
+print(gr43a.get_even())
+print(gr43a.get_odd())
