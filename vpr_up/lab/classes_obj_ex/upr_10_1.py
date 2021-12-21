@@ -6,7 +6,11 @@
 # 2 метода: данни във файл. чете и създава списък на студентите. Метод, който връща данни а студент с четен и нечетен
 # фак. нум
 
+# name: A..., method to upper_case, write_to_file_json, sort_id
+
 import constants.pr_constants as pr_constants
+import json
+
 
 class Student():
     def __init__(self, f_num, name, family, grade):
@@ -70,10 +74,34 @@ class Group:
         for st in self.st_list:
             if st.f_num % 2 == 0:
                 return st
+
     def get_odd(self):
         for st in self.st_list:
             if st.f_num % 2 != 0:
                 return st
+
+    def get_names_a(self):
+        res_list = list()
+        for i in self.st_list:
+            if i.name[0] == 'A':
+                res_list.append(i)
+        return res_list
+
+    def set_names_upper(self):
+        for i in range(len(self.st_list)):
+            self.st_list[i].name = self.st_list[i].name.upper()
+            self.st_list[i].f_name = self.st_list[i].f_name.upper()
+
+    def sort_id(self):
+        return sorted(self.st_list, key=lambda st: st.f_num)
+
+    def write_json(self):
+        json_file = pr_constants.RESOURCES_PATH + "students_json.json"
+        with open(json_file, "a") as file:
+            for st in self.st_list:
+                data = {"id": st.f_num, "name": st.name, "family": st.f_name, "grade": st.grade}
+                json_data = json.dumps(data)
+                file.write(json_data)
 
 
 gr43a = Group([Student(121221146, 'Aleksandar', 'Shopov', 4.60), Student(121221144, 'Aysel', 'Kazalieva', 4.60),
@@ -96,11 +124,25 @@ gr43a = Group([Student(121221146, 'Aleksandar', 'Shopov', 4.60), Student(1212211
 #
 # gr43a.remove()
 
-file = open(str(pr_constants.RESOURCES_PATH + 'students.txt'), 'r')
-gr43a.create_new_list(file)
+# file = open(str(pr_constants.RESOURCES_PATH + 'students.txt'), 'r')
+# gr43a.create_new_list(file)
+# for st in gr43a.st_list:
+#     print(st)
+#
+# print("\n\n")
+# print(gr43a.get_even())
+# print(gr43a.get_odd())
+
+for st in gr43a.get_names_a():
+    print(st)
+print()
+gr43a.set_names_upper()
 for st in gr43a.st_list:
     print(st)
+print()
 
-print("\n\n")
-print(gr43a.get_even())
-print(gr43a.get_odd())
+for st in gr43a.sort_id():
+    print(st)
+
+gr43a.write_json()
+
