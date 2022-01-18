@@ -1,0 +1,23 @@
+[
+  {
+    "Make": "Nokia",
+    "Model": "3310",
+    "price": 100,
+    "quantity": 45,
+    "year": 2010
+  },
+  {
+    "Make": "Nokia",
+    "Model": "5310",
+    "price": 150,
+    "quantity": 30,
+    "year": 2015
+  },
+  {
+    "Make": "Nokia",
+    "Model": "6300",
+    "price": 200,
+    "quantity": 15,
+    "year": 2021
+  }
+]
