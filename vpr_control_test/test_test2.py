@@ -35,8 +35,7 @@ def find_model(make, gsn_list):
     f = open("file_phones.json", "a")
     json_data = list()
     for obj in same_make:
-        json_data.append({"Make": obj.make, "Model": obj.model, "price": obj.price, "quantity": obj.quantity,
-                          "year": obj.year})
+        json_data.append(obj.__dict__)
     f.write(json.dumps(json_data))
 
     f.close()
