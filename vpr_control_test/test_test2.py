@@ -32,19 +32,11 @@ def find_model(make, gsn_list):
         if obj.make == make:
             same_make.append(obj)
 
-    f = open("file_phones.json", "a")
-    json_data = list()
-    for obj in same_make:
-        json_data.append(obj.__dict__)
-    f.write(json.dumps(json_data))
-
-    f.close()
-
-    # f = open("file_phones.json", "a")  # w- всеки път ти ПРЕзаписва файла, използвай "a"
-    # f.write(json.dumps(same_make))
-    # f.close()
-    # json_string=json.dumps(same_make)
-    # return json_string
+    with open("file_phones.json", "a") as f:
+        json_data = list()
+        for obj in same_make:
+            json_data.append(obj.__dict__)
+        f.write(json.dumps(json_data))
 
 
 print('\n---sorted---')
